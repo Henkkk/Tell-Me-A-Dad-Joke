@@ -1,0 +1,18 @@
+import requests
+import json
+
+def dad_joke():
+    
+    question = str(input('Do you want me to tell you a Dad Joke? (Yes/No): '))
+            
+    if question.lower() == 'yes':
+        headers = {"Accept": "application/json"}
+        response = requests.get('https://icanhazdadjoke.com/',headers=headers)
+        jokes = json.loads(response.text)
+        output = jokes['joke']
+        print(output)
+    elif question.lower() == 'no':
+        print("Okay, I'm sad now...")
+    else:
+        print('What do you mean???')
+    return
